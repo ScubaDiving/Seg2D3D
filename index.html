@@ -394,35 +394,47 @@
         <div class="container">
           <div id="results-carousel" class="carousel results-carousel">
             <div class="item">
-              <img src="static/images/carousel1.jpg"
+              <img src="static/images/intro_diagram_v2 (10).drawio.png"
                 alt="Pipeline overview: multi-view input images and segmented 3D point cloud output" loading="lazy" />
               <h2 class="subtitle has-text-centered">
-                Overview of pipeline inputs and outputs. Multi-view 2D images are used to generate a 3D model, which
-                correlates keypoints to associate segments to the same real-world 3D objects.
+                Overview of the proposed pipeline's inputs and outputs. Multi-view 2D images are used to generate the 3D
+                model, which is then used to correlate the keypoints to associate segments to the same real-world 3D
+                objects. Additionally, a segmented 3D point cloud is generated, seen in (d). In red are the 3D Points
+                associated with building ID 12.
               </h2>
             </div>
             <div class="item">
-              <img src="static/images/carousel2.jpg" alt="Grounded SAM segmentation output on street-level images"
-                loading="lazy" />
+              <img src="static/images/research_diagram_new (9).drawio.png"
+                alt="Grounded SAM segmentation output on street-level images" loading="lazy" />
               <h2 class="subtitle has-text-centered">
-                Grounded-SAM zero-shot segmentation output. Text-conditioned detection (GroundingDINO) is fused with
-                high-resolution masks (SAM) to produce semantically meaningful instance masks.
+                Overview of the proposed multi-stage pipeline. The input images are first processed with Grounded SAM
+                to generate detections and segmentation masks. COLMAP keypoints are projected onto the masks, and their
+                associated 3D point tracks are used to identify persistent correspondences across views. The associated
+                mask sets are then clustered into building-level instances based on shared 3D point associations.
+                (Corresponding subsection numbers are in parenthesis).
               </h2>
             </div>
             <div class="item">
-              <img src="static/images/carousel3.jpg"
+              <img src="static/images/2x8 proccess images (6).drawio.png"
                 alt="COLMAP 2D keypoints overlaid on segmentation masks linked to 3D point IDs" loading="lazy" />
               <h2 class="subtitle has-text-centered">
-                COLMAP 2D keypoints overlaid on segmentation masks and linked to their corresponding 3D point IDs via
-                track associations, enabling cross-view identity grounding.
+                isualization of multiple perspectives of the 3D object with the key stages in the proposed processing
+                pipeline.
+                (a) Input source image.
+                (b) Grounded SAM output.
+                (c) COLMAP 2D keypoints overlaid on the masks and linked to their corresponding 3D point IDs via track
+                associations.
+                (d) associated mask sets forming complete building instances by grouping segments that share common 3D
+                points and merging building instances (building~3 in (c) merged into building~2 in (d)).
               </h2>
             </div>
             <div class="item">
-              <img src="static/images/carousel4.jpg"
+              <img src="static/images/3D_relationship (10).drawio.png"
                 alt="Final associated building instances across multiple viewpoints" loading="lazy" />
               <h2 class="subtitle has-text-centered">
-                Final associated building instances. Segments sharing common 3D points are grouped into complete
-                building instances, correctly unified across separate sequences and viewpoints.
+                elationship between 2D COLMAP keypoints, Grounded-SAM generated segment masks and 3D points.
+                In the example, even though the blue segment may have 3D points in other objects, the majority will
+                point towards the correct object.
               </h2>
             </div>
           </div>
@@ -501,7 +513,7 @@
           <h2 class="title">Poster</h2>
 
           <!-- TODO: Replace with your poster PDF -->
-          <iframe src="static/pdfs/sample.pdf" width="100%" height="550">
+          <iframe src="static/pdfs/Poster Presentation - Interim Amir Melnikov-v3.pdf" width="100%" height="550">
           </iframe>
 
         </div>
