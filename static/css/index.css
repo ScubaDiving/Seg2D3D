@@ -242,6 +242,38 @@ body {
     border-radius: var(--border-radius-lg);
 }
 
+/* Image with Caption Styling */
+.image-with-caption {
+  margin-bottom: 5rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+}
+
+.image-with-caption:last-child {
+  border-bottom: none;
+  margin-bottom: 2rem;
+}
+
+.image-with-caption img {
+  width: 100%;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+
+.image-with-caption img:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.caption-text {
+  margin-top: 1.5rem;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
 .publication-body img {
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-md);

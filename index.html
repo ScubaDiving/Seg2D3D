@@ -228,30 +228,10 @@
         </button>
       </div>
       <div class="works-list">
-        <!-- TODO: Replace with your lab's related works -->
-        <a href="https://arxiv.org/abs/2310.00783" class="work-item" target="_blank">
+        <a href="http://www.ok.sc.e.titech.ac.jp/res/NVS/data/VISAPP2025.pdf" class="work-item" target="_blank">
           <div class="work-info">
-            <h5>Propagating Semantic Labels in Video Data</h5>
-            <p>Propagating semantic labels across sequential video frames using feature-based tracking for 3D scene
-              understanding.</p>
-            <span class="work-venue">arXiv 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://openaccess.thecvf.com/content_CVPR_2019/papers/Wang_Associatively_Segmenting_Instances_and_Semantics_in_Point_Clouds_CVPR_2019_paper.pdf"
-          class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Associatively Segmenting Instances and Semantics in Point Clouds</h5>
-            <p>Class-unaware instance and semantic segmentation of 3D point clouds via associative embedding.</p>
-            <span class="work-venue">CVPR 2019</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://arxiv.org/abs/2401.14159" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Grounded SAM: Assembling Open-World Models for Diverse Visual Tasks</h5>
-            <p>Combining GroundingDINO and SAM for open-world zero-shot detection and segmentation.</p>
-            <span class="work-venue">arXiv 2024</span>
+            <h5>Segmentation-Guided Neural Radiance Fields for Novel Street View Synthesis</h5>
+            <span class="work-venue">VISAPP 2025</span>
           </div>
           <i class="fas fa-external-link-alt"></i>
         </a>
@@ -342,12 +322,6 @@
     <section class="hero teaser">
       <div class="container is-max-desktop">
         <div class="hero-body">
-          <!-- TODO: Replace with your teaser video -->
-          <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-            <!-- TODO: Add your video file path here -->
-            <source src="static/videos/banner_video.mp4" type="video/mp4">
-          </video>
-          <!-- TODO: Replace with your video description -->
           <h2 class="subtitle has-text-centered">
             Our pipeline takes unsorted multi-view street-level images and a text label, then produces associated 2D
             segmentation tracks and a segmented 3D point cloud — enabling consistent object identity across
@@ -388,121 +362,89 @@
     <!-- End paper abstract -->
 
 
-    <!-- Image carousel -->
-    <section class="hero is-small">
-      <div class="hero-body">
-        <div class="container">
-          <div id="results-carousel" class="carousel results-carousel">
-            <div class="item">
-              <img src="static/images/intro_diagram_v2 (10).drawio.png"
-                alt="Pipeline overview: multi-view input images and segmented 3D point cloud output" loading="lazy" />
-              <h2 class="subtitle has-text-centered">
-                Overview of the proposed pipeline's inputs and outputs. Multi-view 2D images are used to generate the 3D
-                model, which is then used to correlate the keypoints to associate segments to the same real-world 3D
-                objects. Additionally, a segmented 3D point cloud is generated, seen in (d). In red are the 3D Points
-                associated with building ID 12.
-              </h2>
-            </div>
-            <div class="item">
-              <img src="static/images/research_diagram_new (9).drawio.png"
-                alt="Grounded SAM segmentation output on street-level images" loading="lazy" />
-              <h2 class="subtitle has-text-centered">
-                Overview of the proposed multi-stage pipeline. The input images are first processed with Grounded SAM
-                to generate detections and segmentation masks. COLMAP keypoints are projected onto the masks, and their
-                associated 3D point tracks are used to identify persistent correspondences across views. The associated
-                mask sets are then clustered into building-level instances based on shared 3D point associations.
-                (Corresponding subsection numbers are in parenthesis).
-              </h2>
-            </div>
-            <div class="item">
-              <img src="static/images/2x8 proccess images (6).drawio.png"
-                alt="COLMAP 2D keypoints overlaid on segmentation masks linked to 3D point IDs" loading="lazy" />
-              <h2 class="subtitle has-text-centered">
-                isualization of multiple perspectives of the 3D object with the key stages in the proposed processing
-                pipeline.
-                (a) Input source image.
-                (b) Grounded SAM output.
-                (c) COLMAP 2D keypoints overlaid on the masks and linked to their corresponding 3D point IDs via track
-                associations.
-                (d) associated mask sets forming complete building instances by grouping segments that share common 3D
-                points and merging building instances (building~3 in (c) merged into building~2 in (d)).
-              </h2>
-            </div>
-            <div class="item">
-              <img src="static/images/3D_relationship (10).drawio.png"
-                alt="Final associated building instances across multiple viewpoints" loading="lazy" />
-              <h2 class="subtitle has-text-centered">
-                elationship between 2D COLMAP keypoints, Grounded-SAM generated segment masks and 3D points.
-                In the example, even though the blue segment may have 3D points in other objects, the majority will
-                point towards the correct object.
-              </h2>
-            </div>
+
+    <!-- Proposed Framework -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Proposed Framework</h2>
+        <div class="content">
+
+          <div class="image-with-caption">
+            <img src="static/images/intro_diagram_v2 (10).drawio.png"
+              alt="Pipeline overview: multi-view input images and segmented 3D point cloud output" loading="lazy" />
+            <p class="caption-text has-text-centered">
+              <strong>Overview of the proposed pipeline's inputs and outputs.</strong> Multi-view 2D images are used to
+              generate the 3D model, which is then used to correlate the keypoints to associate segments to the same
+              real-world 3D objects. Additionally, a segmented 3D point cloud is generated, seen in (d). In red are the
+              3D Points associated with building ID 12.
+            </p>
           </div>
+
+          <div class="image-with-caption">
+            <img src="static/images/research_diagram_new (9).drawio.png"
+              alt="Grounded SAM segmentation output on street-level images" loading="lazy" />
+            <p class="caption-text has-text-centered">
+              <strong>Multi-stage processing pipeline.</strong> The input images are first processed with Grounded SAM
+              to generate detections and segmentation masks. COLMAP keypoints are projected onto the masks, and their
+              associated 3D point tracks are used to identify persistent correspondences across views. The associated
+              mask sets are then clustered into building-level instances based on shared 3D point associations.
+            </p>
+          </div>
+
+          <div class="image-with-caption">
+            <img src="static/images/algorithm.png"
+              alt="Algorithm 1: Two-stage association of building instances using 3D Jaccard and cross-instance merging"
+              loading="lazy" style="max-width: 640px; display: block; margin: 0 auto;" />
+            <p class="caption-text has-text-centered">
+              <strong>Algorithm 1: Two-stage association of building instances.</strong> Using 3D Jaccard similarity and
+              cross-instance merging. Initial mask-level associations are iteratively refined by computing pairwise
+              Jaccard overlap between building instance point sets and merging pairs that exceed the threshold τ_M.
+            </p>
+          </div>
+
+          <div class="image-with-caption">
+            <img src="static/images/2x8 proccess images (6).drawio.png"
+              alt="COLMAP 2D keypoints overlaid on segmentation masks linked to 3D point IDs" loading="lazy" />
+            <p class="caption-text has-text-centered">
+              <strong>Visualization of key stages.</strong> (a) Input source image. (b) Grounded SAM output. (c) COLMAP
+              2D keypoints overlaid on the masks and linked to their corresponding 3D point IDs. (d) Associated mask
+              sets forming complete building instances.
+            </p>
+          </div>
+
+          <div class="image-with-caption">
+            <img src="static/images/3D_relationship (10).drawio.png"
+              alt="Final associated building instances across multiple viewpoints" loading="lazy" />
+            <p class="caption-text has-text-centered">
+              <strong>Relationship between 2D masks and 3D points.</strong> Even if segments have points in other
+              objects, the geometric consistency of the majority of points ensures correct object association.
+            </p>
+          </div>
+
         </div>
       </div>
     </section>
-    <!-- End image carousel -->
 
+    <!-- Experimental Results -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Experimental Results</h2>
+        <div class="content">
 
-
-
-    <!-- Youtube video -->
-    <section class="hero is-small is-light">
-      <div class="hero-body">
-        <div class="container">
-          <!-- Paper video. -->
-          <h2 class="title is-3">Video Presentation</h2>
-          <div class="columns is-centered has-text-centered">
-            <div class="column is-four-fifths">
-
-              <div class="publication-video">
-                <!-- TODO: Replace with your YouTube video ID -->
-                <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0"
-                  allow="autoplay; encrypted-media" allowfullscreen></iframe>
-              </div>
-            </div>
+          <div class="image-with-caption" style="max-width: 800px; margin: 0 auto 3rem auto;">
+            <img src="static/images/table.png"
+              alt="Quantitative comparison of Coverage and Adjusted Coverage metrics across methods" loading="lazy"
+              style="max-width: 540px; display: block; margin: 0 auto;" />
+            <p class="caption-text has-text-centered">
+              <strong>Quantitative comparison of association performance.</strong> Our method achieves the highest
+              Coverage (0.655) and Adjusted Coverage (0.841), substantially outperforming IoU Tracker and SAM2+MOTRv2
+              baselines in challenging urban scenarios.
+            </p>
           </div>
+
         </div>
       </div>
     </section>
-    <!-- End youtube video -->
-
-
-    <!-- Video carousel -->
-    <section class="hero is-small">
-      <div class="hero-body">
-        <div class="container">
-          <h2 class="title is-3">Another Carousel</h2>
-          <div id="results-carousel" class="carousel results-carousel">
-            <div class="item item-video1">
-              <!-- TODO: Add poster image for better preview -->
-              <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-                <!-- Your video file here -->
-                <source src="static/videos/carousel1.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="item item-video2">
-              <!-- TODO: Add poster image for better preview -->
-              <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-                <!-- Your video file here -->
-                <source src="static/videos/carousel2.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="item item-video3">
-              <!-- TODO: Add poster image for better preview -->
-              <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-                <!-- Your video file here -->
-                <source src="static/videos/carousel3.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End video carousel -->
-
-
-
 
 
 
