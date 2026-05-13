@@ -322,6 +322,11 @@
     <section class="hero teaser">
       <div class="container is-max-desktop">
         <div class="hero-body">
+          <div class="image-with-caption" style="margin-bottom: 2rem; border-bottom: none;">
+            <img src="static/images/all_tracked_images.gif"
+              alt="Project Banner: Full tracking results across all images" loading="lazy"
+              style="width: 100%; border-radius: 8px; box-shadow: var(--shadow-lg);" />
+          </div>
           <h2 class="subtitle has-text-centered">
             Our pipeline takes unsorted multi-view street-level images and a text label, then produces associated 2D
             segmentation tracks and a segmented 3D point cloud — enabling consistent object identity across
@@ -439,6 +444,16 @@
               <strong>Quantitative comparison of association performance.</strong> Our method achieves the highest
               Coverage (0.655) and Adjusted Coverage (0.841), substantially outperforming IoU Tracker and SAM2+MOTRv2
               baselines in challenging urban scenarios.
+            </p>
+          </div>
+
+          <div class="image-with-caption">
+            <img src="static/images/merged_building_2_skip_missing.gif"
+              alt="Example of tracking for a single building instance" loading="lazy" />
+            <p class="caption-text has-text-centered">
+              <strong>Qualitative results for a single building instance.</strong> Example of the associated 2D track
+              forming a complete building instance. Even with occasional missing detections or wide-baseline gaps,
+              our 3D-driven association ensures a stable object identity.
             </p>
           </div>
 
